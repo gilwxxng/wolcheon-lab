@@ -23,6 +23,14 @@ export const CALCULATORS: CalculatorMeta[] = [
     available: true,
   },
   {
+    slug: "etf-blend",
+    title: "ETF 조합 시뮬레이터",
+    shortTitle: "ETF 조합",
+    emoji: "🧪",
+    description: "SCHD+JEPI 같은 유명 조합을 비율별로 섞으면 필요 시드가 어떻게 변하는지 계산해요.",
+    available: true,
+  },
+  {
     slug: "compound-interest",
     title: "복리 계산기 (준비 중)",
     shortTitle: "복리 계산",

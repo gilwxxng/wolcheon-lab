@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 
 const NAV_LINKS = [
   { href: "/calculators/monthly-dividend", label: "월배당 계산기" },
+  { href: "/calculators/etf-blend", label: "ETF 조합" },
   { href: "/guide", label: "사용법" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "소개" },
