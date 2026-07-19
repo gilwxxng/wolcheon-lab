@@ -19,7 +19,8 @@ export const CALCULATORS: CalculatorMeta[] = [
     title: "월배당 인컴 계산기",
     shortTitle: "월배당 인컴",
     emoji: "💰",
-    description: "목표 월 배당액을 세금까지 반영해서, 진짜로 필요한 시드머니를 계산해요.",
+    description:
+      "입력 3번이면 끝. 목표 월 배당에 필요한 시드머니를 세후 기준으로 10초 만에 확인해요.",
     available: true,
   },
   {
@@ -28,7 +29,7 @@ export const CALCULATORS: CalculatorMeta[] = [
     shortTitle: "배당 포트폴리오",
     emoji: "🧪",
     description:
-      "인기 배당 ETF를 직접 골라 비중을 조정하고, 시드·월 적립액 기준으로 목표 달성 기간을 계산해요.",
+      "심화 버전. 인기 배당 ETF로 조합을 짜고 시드·월 적립액 기준 목표 달성 기간까지 시뮬레이션해요.",
     available: true,
   },
   {

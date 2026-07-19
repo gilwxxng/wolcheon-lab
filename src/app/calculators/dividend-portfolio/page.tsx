@@ -33,7 +33,11 @@ export default function DividendPortfolioPage() {
         <p className="mt-2.5 text-sm leading-relaxed text-muted">
           미국·국내 인기 배당 ETF 중에서 원하는 것들을 골라 비중을 조정해보세요. 현재 시드와 월
           적립액을 넣으면 목표 월배당 달성 시점을 세후 기준으로 계산하고, 비중만 바꾼 변형 조합과도
-          비교해드려요.
+          비교해드려요. 필요 시드만 빠르게 알고 싶다면{" "}
+          <a href="/calculators/monthly-dividend" className="text-accent-strong underline">
+            월배당 인컴 계산기
+          </a>
+          가 더 간단해요.
         </p>
       </header>
 

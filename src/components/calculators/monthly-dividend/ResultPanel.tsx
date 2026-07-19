@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ACCOUNT_TYPES, AccountType, TAX_CONFIG, COMPREHENSIVE_TAX_NOTICE } from "@/config/tax-config";
 import type { InvestmentId } from "@/config/investment-options";
 import type { MonthlyDividendResult } from "@/lib/calculator";
@@ -162,6 +163,20 @@ export function ResultPanel({
               ? "공유했어요 ✓"
               : "📤 결과 저장/공유하기"}
         </button>
+
+        {/* 심화 계산기로 연결 */}
+        <Link
+          href="/calculators/dividend-portfolio"
+          className="block rounded-xl border border-accent/40 bg-accent/5 p-4 text-sm leading-relaxed transition-colors hover:bg-accent/10"
+        >
+          <span className="font-bold text-accent-strong">
+            🧪 여러 ETF를 섞어서 전략을 짜보고 싶다면 →
+          </span>
+          <span className="mt-0.5 block text-xs text-muted">
+            인기 배당 ETF를 직접 골라 비중을 조정하고, 시드·월 적립액 기준으로 목표 달성 시점까지
+            계산하는 배당 포트폴리오 시뮬레이터로 이어가세요.
+          </span>
+        </Link>
 
         {/* 적용된 세금 가정 */}
         <details className="rounded-xl border border-border bg-surface-elevated/50 p-4 text-sm">
