@@ -39,10 +39,9 @@ export function QuoteTicker() {
         // 명언이 바뀔 때 스크린리더가 다시 읽지 않도록 장식적 컨텐츠로 처리
         aria-live="off"
       >
-        <p className="text-sm font-medium italic leading-relaxed text-foreground">
-          &ldquo;{quote.en}&rdquo;
+        <p className="text-[15px] font-medium leading-relaxed text-foreground">
+          &ldquo;{quote.kr}&rdquo;
         </p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted">&ldquo;{quote.kr}&rdquo;</p>
         <p className="mt-2 text-xs text-muted/80">
           — <span className="font-semibold text-foreground/90">{quote.authorKr}</span>{" "}
           <span className="text-muted/60">
