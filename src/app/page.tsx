@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { CALCULATORS } from "@/config/calculators";
 import { CalculatorCard } from "@/components/home/CalculatorCard";
+import { QuoteTicker } from "@/components/home/QuoteTicker";
 import { AdSlot } from "@/components/ads/AdSlot";
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-4xl px-4 pb-16">
+      <div className="pt-4">
+        <QuoteTicker />
+      </div>
+
       <section className="py-10 text-center sm:py-14">
         <p className="mb-3 text-sm font-semibold text-accent-strong">세후 실수령 기준 재테크 계산기</p>
         <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">

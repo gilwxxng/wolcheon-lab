@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { AdSlot } from "@/components/ads/AdSlot";
 
 const title = "자주 묻는 질문 (FAQ)";
 const description = "월천연구소 계산기의 세금 기준, 계산 가정, 배당률 출처, 투자 권유 여부 등 자주 묻는 질문을 정리했습니다.";
@@ -59,6 +60,8 @@ export default function FaqPage() {
           세금 기준, 계산 가정, 배당률 출처 등 자주 나오는 질문을 모았습니다.
         </p>
       </header>
+
+      <AdSlot label="FAQ 상단 광고" className="mb-8" />
 
       <div className="space-y-3">
         {FAQ_ITEMS.map((item, i) => (

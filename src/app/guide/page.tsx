@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { StepPreview } from "@/components/guide/StepPreview";
+import { AdSlot } from "@/components/ads/AdSlot";
 
 const title = "사용법 가이드";
 const description = "월천연구소의 월배당 인컴 계산기를 단계별로 사용하는 방법을 화면 미리보기와 함께 안내합니다.";
@@ -53,6 +54,8 @@ export default function GuidePage() {
           를 처음 쓰시는 분들을 위한 단계별 안내입니다.
         </p>
       </header>
+
+      <AdSlot label="가이드 상단 광고" className="mb-8" />
 
       <ol className="space-y-8">
         {STEPS.map((s) => (
