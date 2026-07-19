@@ -23,11 +23,12 @@ export const CALCULATORS: CalculatorMeta[] = [
     available: true,
   },
   {
-    slug: "etf-blend",
-    title: "ETF 조합 시뮬레이터",
-    shortTitle: "ETF 조합",
+    slug: "dividend-portfolio",
+    title: "배당 포트폴리오 시뮬레이터",
+    shortTitle: "배당 포트폴리오",
     emoji: "🧪",
-    description: "SCHD+JEPI 같은 유명 조합을 비율별로 섞으면 필요 시드가 어떻게 변하는지 계산해요.",
+    description:
+      "인기 배당 ETF를 직접 골라 비중을 조정하고, 시드·월 적립액 기준으로 목표 달성 기간을 계산해요.",
     available: true,
   },
   {
