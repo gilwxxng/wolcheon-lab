@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { StepPreview } from "@/components/guide/StepPreview";
 
 const title = "사용법 가이드";
-const description = "월천연구소의 월배당 인컴 계산기를 단계별로 사용하는 방법을 화면 캡처와 함께 안내합니다.";
+const description = "월천연구소의 월배당 인컴 계산기를 단계별로 사용하는 방법을 화면 미리보기와 함께 안내합니다.";
 
 export const metadata: Metadata = {
   title,
@@ -63,9 +64,7 @@ export default function GuidePage() {
               <h2 className="text-base font-bold">{s.title}</h2>
             </div>
             <p className="mb-3 text-sm leading-relaxed text-muted">{s.body}</p>
-            <div className="flex h-40 items-center justify-center rounded-xl border border-dashed border-border bg-surface-elevated/50 text-xs text-muted">
-              화면 캡처 자리 (STEP {s.step} 스크린샷)
-            </div>
+            <StepPreview step={s.step as 1 | 2 | 3 | 4 | 5} />
           </li>
         ))}
       </ol>

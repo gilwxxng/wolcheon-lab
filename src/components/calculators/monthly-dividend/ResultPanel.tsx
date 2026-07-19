@@ -25,6 +25,9 @@ export function ResultPanel({
   const maxSeed = Math.max(...result.investmentComparison.map((r) => r.requiredSeed));
   const maxAccountNet = Math.max(...result.accountComparison.map((r) => r.netAnnual));
 
+  const bestInvestment = result.investmentComparison.find((r) => r.id === result.bestInvestmentId)!;
+  const bestAccount = result.accountComparison.find((r) => r.id === result.bestAccountId)!;
+
   const summaryText = [
     `[${siteConfig.name}] 월 ${formatManwon(monthlyTargetWon)} 배당 시뮬레이션`,
     `세후 기준 필요 시드: ${formatKoreanCurrency(result.seedAfterTax)}`,
@@ -78,6 +81,20 @@ export function ResultPanel({
       </div>
 
       <div className="space-y-7 px-5 py-6">
+        {/* 실시간 최적 조합 하이라이트 */}
+        <div className="rounded-xl border border-positive/30 bg-positive/10 p-4 text-sm leading-relaxed">
+          <p className="font-bold text-positive">⚡ 지금 입력 기준 최적 조합</p>
+          <p className="mt-1 text-foreground">
+            <strong>{bestInvestment.shortLabel}</strong> + <strong>{bestAccount.shortLabel}</strong>{" "}
+            조합일 때 필요 시드가 가장 적어요.
+          </p>
+          <p className="mt-1.5 text-xs text-muted">
+            * 지금 화면에 있는 4개 투자수단·3개 계좌 조합 중 계산상 가장 효율적인 조합이며, 특정
+            상품을 추천하는 것이 아닙니다. 배당률이 높을수록 필요 시드는 작게 계산되지만 원금 변동
+            등 위험도 함께 커질 수 있으니 아래 비교와 주의사항을 함께 확인하세요.
+          </p>
+        </div>
+
         {/* 투자 수단별 비교 */}
         <section>
           <h3 className="mb-3 text-sm font-bold text-foreground">
@@ -93,6 +110,7 @@ export function ResultPanel({
                 maxValue={maxSeed}
                 muted={row.isReferenceOnly}
                 highlight={row.id === investmentId}
+                isBest={row.id === result.bestInvestmentId}
               />
             ))}
           </div>
@@ -122,6 +140,7 @@ export function ResultPanel({
                 value={row.netAnnual}
                 maxValue={maxAccountNet}
                 highlight={row.id === account}
+                isBest={row.id === result.bestAccountId}
               />
             ))}
           </div>

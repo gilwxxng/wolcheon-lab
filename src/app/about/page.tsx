@@ -61,6 +61,12 @@ export default function AboutPage() {
             계산기 개선 제안이나 오류 제보는 언제든 환영합니다. 새로운 계산기 아이디어가 있다면
             편하게 알려주세요.
           </p>
+          <a
+            href={`mailto:${siteConfig.contactEmail}`}
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground"
+          >
+            ✉️ {siteConfig.contactEmail}
+          </a>
         </section>
       </div>
     </div>

@@ -7,4 +7,5 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://wolcheon-lab.vercel.app",
   ogImage: "/og-default.png",
   twitter: "@wolcheonlab",
+  contactEmail: "gilwxxng@gmail.com",
 } as const;

@@ -7,6 +7,7 @@ export function ComparisonBar({
   maxValue,
   highlight,
   muted,
+  isBest,
 }: {
   label: string;
   sublabel?: string;
@@ -14,6 +15,7 @@ export function ComparisonBar({
   maxValue: number;
   highlight?: boolean;
   muted?: boolean;
+  isBest?: boolean;
 }) {
   const widthPercent = maxValue > 0 ? Math.max(4, Math.round((value / maxValue) * 100)) : 0;
 
@@ -23,6 +25,11 @@ export function ComparisonBar({
         <span className={`font-medium ${muted ? "text-muted" : "text-foreground"}`}>
           {label}
           {sublabel && <span className="ml-1.5 text-xs text-muted">{sublabel}</span>}
+          {isBest && (
+            <span className="ml-1.5 rounded-full bg-positive/15 px-1.5 py-0.5 text-[10px] font-bold text-positive">
+              최적
+            </span>
+          )}
         </span>
         <span className={`font-bold ${highlight ? "text-accent-strong" : "text-foreground"}`}>
           {formatKoreanCurrency(value)}

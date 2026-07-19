@@ -78,6 +78,10 @@ export interface MonthlyDividendResult {
   seedAfterTax: number;
   investmentComparison: InvestmentComparisonRow[];
   accountComparison: AccountComparisonRow[];
+  /** 지금 입력된 4개 투자수단 중 필요 시드가 가장 적은 항목의 id */
+  bestInvestmentId: InvestmentId;
+  /** 지금 입력된 3개 계좌 종류 중 연간 실수령액이 가장 큰 항목의 id */
+  bestAccountId: AccountType;
 }
 
 export function calculateMonthlyDividend(input: MonthlyDividendInput): MonthlyDividendResult {
@@ -111,6 +115,13 @@ export function calculateMonthlyDividend(input: MonthlyDividendInput): MonthlyDi
     };
   });
 
+  const bestInvestmentId = investmentComparison.reduce((best, row) =>
+    row.requiredSeed < best.requiredSeed ? row : best
+  ).id;
+  const bestAccountId = accountComparison.reduce((best, row) =>
+    row.netAnnual > best.netAnnual ? row : best
+  ).id;
+
   return {
     targetAnnualNet,
     requiredGrossAnnual,
@@ -118,5 +129,7 @@ export function calculateMonthlyDividend(input: MonthlyDividendInput): MonthlyDi
     seedAfterTax,
     investmentComparison,
     accountComparison,
+    bestInvestmentId,
+    bestAccountId,
   };
 }

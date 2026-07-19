@@ -25,7 +25,10 @@ export function Footer() {
           있습니다.
         </p>
         <p className="mt-3 text-xs text-muted/70">
-          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved. · 문의:{" "}
+          <a href={`mailto:${siteConfig.contactEmail}`} className="underline hover:text-foreground">
+            {siteConfig.contactEmail}
+          </a>
         </p>
       </div>
     </footer>
