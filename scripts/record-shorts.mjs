@@ -10,8 +10,10 @@
  */
 
 import { chromium } from "playwright";
-import { mkdirSync, renameSync } from "node:fs";
+import { mkdirSync, renameSync, unlinkSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
+import ffmpegPath from "ffmpeg-static";
 
 // ─────────────────────────────────────────────
 // 여기만 바꾸면 됩니다
@@ -191,14 +193,25 @@ async function main() {
   await context.close(); // 여기서 영상이 저장됨
   await browser.close();
 
-  // 저장된 영상 파일 이름을 알아보기 쉽게 변경
+  // 저장된 webm을 아이폰·맥에서 바로 열리는 mp4(H.264)로 변환
   const video = page.video();
   const rawPath = await video.path().catch(() => null);
   const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
-  const finalName = `shorts_${CONFIG.targetLabel}_${CONFIG.investment}_${CONFIG.account}_${stamp}.webm`;
+  const finalName = `shorts_${CONFIG.targetLabel}_${CONFIG.investment}_${CONFIG.account}_${stamp}.mp4`;
   const finalPath = path.join(VIDEO_DIR, finalName);
   if (rawPath) {
-    renameSync(rawPath, finalPath);
+    console.log("mp4로 변환 중...");
+    execFileSync(ffmpegPath, [
+      "-y",
+      "-i", rawPath,
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "20",
+      "-pix_fmt", "yuv420p", // 애플 기기 호환 필수 옵션
+      "-movflags", "+faststart",
+      finalPath,
+    ]);
+    unlinkSync(rawPath); // 원본 webm 삭제
     console.log(`\n✅ 완료! 영상 저장 위치:\n${finalPath}`);
   } else {
     console.log(`\n✅ 완료! videos/ 폴더에서 영상을 확인하세요.`);
