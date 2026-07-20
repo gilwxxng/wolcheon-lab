@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { VisitorCounter } from "./VisitorCounter";
 
 const FOOTER_LINKS = [
   { href: "/about", label: "소개" },
@@ -30,6 +31,7 @@ export function Footer() {
             {siteConfig.contactEmail}
           </a>
         </p>
+        <VisitorCounter />
       </div>
     </footer>
   );

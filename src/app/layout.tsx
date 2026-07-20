@@ -67,6 +67,13 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        {siteConfig.goatcounterCode && (
+          <script
+            data-goatcounter={`https://${siteConfig.goatcounterCode}.goatcounter.com/count`}
+            async
+            src="https://gc.zgo.at/count.js"
+          />
+        )}
       </body>
     </html>
   );

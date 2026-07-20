@@ -8,4 +8,10 @@ export const siteConfig = {
   ogImage: "/og-default.png",
   twitter: "@wolcheonlab",
   contactEmail: "gilwxxng@gmail.com",
+  /**
+   * GoatCounter 방문자 통계 코드.
+   * goatcounter.com 가입 시 정한 코드(예: "wolcheon-lab")를 넣으면
+   * 방문 집계 스크립트와 방문자 수 표시가 자동으로 켜집니다. 비워두면 꺼져요.
+   */
+  goatcounterCode: "",
 } as const;
