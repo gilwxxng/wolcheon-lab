@@ -38,8 +38,8 @@ const CONFIG = {
 // ─────────────────────────────────────────────
 
 const VIDEO_DIR = path.resolve(import.meta.dirname, "..", "videos");
-const VIDEO_SIZE = { width: 1080, height: 1920 }; // 쇼츠 세로 규격
-const VIEWPORT = { width: 540, height: 960 }; // 9:16 모바일 레이아웃 (녹화 시 2배 확대됨)
+const VIEWPORT = { width: 540, height: 960 }; // 9:16 모바일 레이아웃
+// 녹화는 화면 크기 그대로 하고, mp4 변환 때 1080x1920 쇼츠 규격으로 확대합니다.
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /** 사람 손맛: min~max 사이 랜덤 대기 */
@@ -152,7 +152,7 @@ async function main() {
     isMobile: true,
     hasTouch: true,
     locale: "ko-KR",
-    recordVideo: { dir: VIDEO_DIR, size: VIDEO_SIZE },
+    recordVideo: { dir: VIDEO_DIR, size: VIEWPORT },
   });
   const page = await context.newPage();
 
@@ -204,6 +204,7 @@ async function main() {
     execFileSync(ffmpegPath, [
       "-y",
       "-i", rawPath,
+      "-vf", "scale=1080:1920:flags=lanczos", // 쇼츠 규격으로 확대
       "-c:v", "libx264",
       "-preset", "medium",
       "-crf", "20",
